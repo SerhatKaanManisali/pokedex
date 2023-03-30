@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-</head>
-<body onload="loadPokemon()">
-    
-    <div id="pokedex">
-        <h1 id="pokemon-name">name</h1>
-    </div>
 
-    <div class="info-container">
-        <img id="pokemon-image">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body onload="loadPokemon()">
+
+  <nav class="navbar bg-body-tertiary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand">
+        <img class="d-inline-block align-text-top icon" src="img/brand-icon.png">
+        Pokedex
+      </a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
+  </nav>
+
+  <div id="pokemon-list" class="pokemon-list row row-cols-5 m-0">
+  </div>
 
 </body>
+
 </html>

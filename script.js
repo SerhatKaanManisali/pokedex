@@ -1,17 +1,19 @@
-let currentPokemon;
-
-
 async function loadPokemon() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/pikachu'
+    let url = `https://pokeapi.co/api/v2/pokemon/1`
     let response = await fetch(url);
-    currentPokemon = await response.json();
-    console.log(currentPokemon);
-
-    renderPokemonInfo();
+    pokemonList = await response.json();
+    console.log(pokemonList);
+    renderPokemonList();
 }
 
 
-function renderPokemonInfo() {
-    document.getElementById('pokemon-name').innerHTML = currentPokemon['name'];
-    document.getElementById('pokemon-image').src = currentPokemon['sprites']['other']['home']['front_default']
+function renderPokemonList() {
+    document.getElementById('pokemon-list').innerHTML += pokemonTemplate();
+}
+
+
+function pokemonTemplate() {
+    return /*html*/`
+        
+    `;
 }
