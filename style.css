@@ -8,7 +8,6 @@ body {
 }
 
 .pokemon-list {
-    min-height: 100vh;
     background-image: url('img/background.jpeg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -19,4 +18,76 @@ body {
 .icon {
     width: 30px;
     height: 30px;
+}
+
+.grass-badge {
+    background-color: #9BCC50;
+}
+
+.fire-badge {
+    background-color: #FD7D24;
+}
+
+.water-badge {
+    background-color: #4592C4;
+}
+
+.bug-badge {
+    background-color: #729F3F;
+}
+
+.normal-badge {
+    background-color: #A4ACAF;
+}
+
+.poison-badge {
+    background-color: #B97FC9;
+}
+
+.electric-badge {
+    background-color: #EED535;
+}
+
+.ground-badge {
+    /* background-color: ; */
+}
+
+.fairy-badge {
+    background-color: #FDB9E9;
+}
+
+.fighting-badge {
+    background-color: #D56723;
+}
+
+.psychic-badge {
+    background-color: #F366B9;
+}
+
+.rock-badge {
+    background-color: #A38C21;
+}
+
+.ghost-badge {
+    background-color: #7B62A3;
+}
+
+.ice-badge {
+    background-color: #51C4E7;
+}
+
+.dragon-badge {
+    background-color: #941515;
+}
+
+.dark-badge {
+    background-color: #707070;
+}
+
+.steel-badge {
+    background-color: #9EB7B8;
+}
+
+.flying-badge {
+    background-color: #37877d;
 }
