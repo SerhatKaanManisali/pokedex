@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    
+
 }
 
 .pokemon-list {
@@ -24,70 +24,142 @@ body {
     background-color: #9BCC50;
 }
 
+.grass-card {
+    background-color: #7ba33f !important;
+}
+
 .fire-badge {
     background-color: #FD7D24;
+}
+
+.fire-card {
+    background-color: #d36a1e !important;
 }
 
 .water-badge {
     background-color: #4592C4;
 }
 
+.water-card {
+    background-color: #3776a0 !important;
+}
+
 .bug-badge {
     background-color: #729F3F;
+}
+
+.bug-card {
+    background-color: #597c32 !important;
 }
 
 .normal-badge {
     background-color: #A4ACAF;
 }
 
+.normal-card {
+    background-color: #82898b !important;
+}
+
 .poison-badge {
     background-color: #B97FC9;
+}
+
+.poison-card {
+    background-color: #8d6099 !important;
 }
 
 .electric-badge {
     background-color: #EED535;
 }
 
+.electric-card {
+    background-color: #c7b22c !important;
+}
+
 .ground-badge {
-    background-color: #47402c;
+    background-color: #6d6243;
+}
+
+.ground-card {
+    background-color: #4d452f !important;
 }
 
 .fairy-badge {
     background-color: #FDB9E9;
 }
 
+.fairy-card {
+    background-color: #cf97be !important;
+}
+
 .fighting-badge {
     background-color: #D56723;
+}
+
+.fighting-card {
+    background-color: #b1561d !important;
 }
 
 .psychic-badge {
     background-color: #F366B9;
 }
 
+.psychic-card {
+    background-color: #c75397 !important;
+}
+
 .rock-badge {
     background-color: #A38C21;
+}
+
+.rock-card {
+    background-color: #7c6a19 !important;
 }
 
 .ghost-badge {
     background-color: #7B62A3;
 }
 
+.ghost-card {
+    background-color: #614d81 !important;
+}
+
 .ice-badge {
     background-color: #51C4E7;
+}
+
+.ice-card {
+    background-color: #44a6c4 !important;
 }
 
 .dragon-badge {
     background-color: #941515;
 }
 
+.dragon-card {
+    background-color: #721111 !important;
+}
+
 .dark-badge {
     background-color: #707070;
+}
+
+.dark-card {
+    background-color: #575757 !important;
 }
 
 .steel-badge {
     background-color: #9EB7B8;
 }
 
+.steel-card {
+    background-color: #7b8e8f !important;
+}
+
 .flying-badge {
     background-color: #37877d;
+}
+
+.flying-card {
+    background-color: #2a665f !important;
 }
