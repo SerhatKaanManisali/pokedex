@@ -1,11 +1,11 @@
 let currentPokemon
 
 async function requestPokemon() {
-    for (let i = 1; i < 13; i++) {
+    for (let i = 1; i < 50; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`
         let response = await fetch(url);
         currentPokemon = await response.json();
-        renderPokemon(i);  
+        renderPokemon(i);
 
         console.log(currentPokemon)
     }
@@ -31,9 +31,9 @@ function pokemonCardTemplate(formattedPokemonName, i) {
     return document.getElementById('pokemon-list').innerHTML += /*html*/`
     <div class="card m-3" style="width: 18rem;">
         <img id="pokemon-image${i}" src="" class="card-img-top">
-        <div class="card-body">
+        <div id="card-body${i}" class="card-body">
             <h5 class="card-title text-center">${formattedPokemonName}</h5>
-            <span id="type-badge${i}" class="badge bg-gradient"></span>
+            
         </div>
     </div>
     `;
@@ -41,12 +41,16 @@ function pokemonCardTemplate(formattedPokemonName, i) {
 
 
 function renderTypeBadge(i) {
-    let typeName = currentPokemon['types']['0']['type']['name'];
-    let formattedTypeName = capitalizeFirstLetter(typeName);
-    let typeBadge = document.getElementById(`type-badge${i}`);
+    let typeList = currentPokemon['types'];
+    let cardBody = document.getElementById(`card-body${i}`);
+    
 
-    typeBadge.classList.add(`${typeName}-badge`);
-    typeBadge.innerHTML = formattedTypeName;
-
-    // TO DO: Show multiple types
+    for (let t = 0; t < typeList.length; t++) {
+        const type = typeList[t]['type']['name'];
+        let formattedType = capitalizeFirstLetter(type);
+        cardBody.innerHTML += /*html*/`
+            <span id="${t}types${i}" class="badge">${formattedType}</span>
+        `;
+        document.getElementById(`${t}types${i}`).classList.add(`${type}-badge`);
+    }
 }
