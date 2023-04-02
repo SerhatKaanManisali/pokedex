@@ -4,7 +4,11 @@
 
 body {
     margin: 0;
+}
 
+.icon {
+    width: 30px;
+    height: 30px;
 }
 
 .pokemon-list {
@@ -15,151 +19,163 @@ body {
     background-attachment: fixed;
 }
 
-.icon {
-    width: 30px;
-    height: 30px;
+.pokemon-card {
+    box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.15), -2px -2px 5px 3px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    background-image: url('img/brand-icon.png');
+    background-position: center;
+    background-size: cover;
+    transition: transform 100ms ease-in-out;
+}
+
+.card-img-top:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .grass-badge {
-    background-color: #9BCC50;
+    background-color: #7ba33f;
 }
 
 .grass-card {
-    background-color: #7ba33f !important;
+    background-color: #9BCC50 !important;
 }
 
 .fire-badge {
-    background-color: #FD7D24;
+    background-color: #d36a1e;
 }
 
 .fire-card {
-    background-color: #d36a1e !important;
+    background-color: #FD7D24 !important;
 }
 
 .water-badge {
-    background-color: #4592C4;
+    background-color: #3776a0;
 }
 
 .water-card {
-    background-color: #3776a0 !important;
+    background-color: #4592C4 !important;
 }
 
 .bug-badge {
-    background-color: #729F3F;
+    background-color: #597c32;
 }
 
 .bug-card {
-    background-color: #597c32 !important;
+    background-color: #729F3F !important;
 }
 
 .normal-badge {
-    background-color: #A4ACAF;
+    background-color: #82898b;
 }
 
 .normal-card {
-    background-color: #82898b !important;
+    background-color: #A4ACAF !important;
 }
 
 .poison-badge {
-    background-color: #B97FC9;
+    background-color: #8d6099;
 }
 
 .poison-card {
-    background-color: #8d6099 !important;
+    background-color: #B97FC9 !important;
 }
 
 .electric-badge {
-    background-color: #EED535;
+    background-color: #c7b22c;
 }
 
 .electric-card {
-    background-color: #c7b22c !important;
+    background-color: #EED535 !important;
 }
 
 .ground-badge {
-    background-color: #6d6243;
+    background-color: #4d452f;
 }
 
 .ground-card {
-    background-color: #4d452f !important;
+    background-color: #6d6243 !important;
 }
 
 .fairy-badge {
-    background-color: #FDB9E9;
+    background-color: #cf97be;
 }
 
 .fairy-card {
-    background-color: #cf97be !important;
+    background-color: #FDB9E9 !important;
 }
 
 .fighting-badge {
-    background-color: #D56723;
+    background-color: #b1561d;
 }
 
 .fighting-card {
-    background-color: #b1561d !important;
+    background-color: #D56723 !important;
 }
 
 .psychic-badge {
-    background-color: #F366B9;
+    background-color: #c75397;
 }
 
 .psychic-card {
-    background-color: #c75397 !important;
+    background-color: #F366B9 !important;
 }
 
 .rock-badge {
-    background-color: #A38C21;
+    background-color: #7c6a19;
 }
 
 .rock-card {
-    background-color: #7c6a19 !important;
+    background-color: #A38C21 !important;
 }
 
 .ghost-badge {
-    background-color: #7B62A3;
+    background-color: #614d81;
 }
 
 .ghost-card {
-    background-color: #614d81 !important;
+    background-color: #7B62A3 !important;
 }
 
 .ice-badge {
-    background-color: #51C4E7;
+    background-color: #44a6c4;
 }
 
 .ice-card {
-    background-color: #44a6c4 !important;
+    background-color: #51C4E7 !important;
 }
 
 .dragon-badge {
-    background-color: #941515;
+    background-color: #721111;
 }
 
 .dragon-card {
-    background-color: #721111 !important;
+    background-color: #941515 !important;
 }
 
 .dark-badge {
-    background-color: #707070;
+    background-color: #575757;
 }
 
 .dark-card {
-    background-color: #575757 !important;
+    background-color: #707070 !important;
 }
 
 .steel-badge {
-    background-color: #9EB7B8;
+    background-color: #7b8e8f;
 }
 
 .steel-card {
-    background-color: #7b8e8f !important;
+    background-color: #9EB7B8 !important;
 }
 
 .flying-badge {
-    background-color: #37877d;
+    background-color: #2a665f;
 }
 
 .flying-card {
-    background-color: #2a665f !important;
+    background-color: #37877d !important;
 }
+

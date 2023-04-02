@@ -1,25 +1,42 @@
-let currentPokemon
+let pokemons = [];
 
-async function requestPokemon() {
-    for (let i = 1; i < 50; i++) {
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}`
-        let response = await fetch(url);
-        currentPokemon = await response.json();
-        renderPokemon(i);
 
-        console.log(currentPokemon)
+async function getPokemons() {
+    for (let i = 1; i < 11; i++) {
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        let rawData = await fetch(url);
+        let sortedData = await rawData.json();
+        pokemons.push(sortedData);
+    }
+    console.log(pokemons);
+    renderPokemons();
+}
+
+
+function renderPokemons() {
+    for (let j = 0; j < pokemons.length; j++) {
+        const pokemon = pokemons[j];
+        let name = pokemon['name'];
+        let id = pokemon['id']
+        let image = pokemon['sprites']['other']['home']['front_default'];
+        pokemonTemplate(j, name, id, image);
     }
 }
 
 
-function renderPokemon(i) {
-    let pokemonImage = currentPokemon['sprites']['other']['home']['front_default'];
-    let rawPokemonName = currentPokemon['name'];
-    let formattedPokemonName = capitalizeFirstLetter(rawPokemonName);
-    pokemonCardTemplate(formattedPokemonName, i);
-    document.getElementById(`pokemon-image${i}`).src = pokemonImage;
-    renderTypeBadge(i);
-    renderCardBackground(i);
+function pokemonTemplate(j, name, id, image) {
+    let pokemonList = document.getElementById('pokemon-list');
+    pokemonList.innerHTML += /*html*/`
+        <div id="card${j}" class="card m-3 text-center" style="width: 18rem;">
+            <span class="fs-1">${id}</span>
+            <img src="${image}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title fs-1">${name}</h5>
+                <span class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</span>
+            </div>
+        </div>
+    `;
+    function addClass ();
 }
 
 
@@ -28,37 +45,6 @@ function capitalizeFirstLetter(name) {
 }
 
 
-function pokemonCardTemplate(formattedPokemonName, i) {
-    return document.getElementById('pokemon-list').innerHTML += /*html*/`
-    <div id="card-background${i}" class="card m-3" style="width: 18rem;">
-        <img id="pokemon-image${i}" src="" class="card-img-top">
-        <div id="card-body${i}" class="card-body">
-            <h5 class="card-title text-center">${formattedPokemonName}</h5>
-        </div>
-    </div>
-    `;
-}
-
-
-function renderTypeBadge(i) {
-    let typeList = currentPokemon['types'];
-    let cardBody = document.getElementById(`card-body${i}`);
+function addClass() {
     
-    for (let t = 0; t < typeList.length; t++) {
-        const type = typeList[t]['type']['name'];
-        let formattedType = capitalizeFirstLetter(type);
-
-        cardBody.innerHTML += /*html*/`
-            <span id="${t}types${i}" class="badge">${formattedType}</span>
-        `;
-        
-        document.getElementById(`${t}types${i}`).classList.add(`${type}-badge`);
-    }
-}
-
-
-function renderCardBackground(i) {
-    let cardBackground = document.getElementById(`card-background${i}`);
-    let type = currentPokemon['types']['0']['type']['name']
-    cardBackground.classList.add(`${type}-card`)
 }
