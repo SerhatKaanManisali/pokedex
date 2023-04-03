@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    position: relative;
+}
+
 body {
     margin: 0;
 }
@@ -9,6 +13,49 @@ body {
 .icon {
     width: 30px;
     height: 30px;
+}
+
+.detailed-card {
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#detailed-card-background {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -47.5%);
+    min-height: 450px;
+    min-width: 450px;
+    overflow: hidden;
+    background-image: url('img/card-background.png');
+    background-position: 50% 30%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card-header {
+    position: relative;
+}
+
+#close-icon {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    cursor: pointer;
+    color: white;
+}
+
+.tab-content {
+    min-height: 200px;
+    background-color: white;
 }
 
 .pokemon-list {
@@ -21,12 +68,13 @@ body {
 
 .pokemon-card {
     box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.15), -2px -2px 5px 3px rgba(0, 0, 0, 0.15);
+    background-image: url('img/card-background.png');
+    background-position: 50% 30%;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .card-img-top {
-    background-image: url('img/brand-icon.png');
-    background-position: center;
-    background-size: cover;
     transition: transform 100ms ease-in-out;
 }
 
