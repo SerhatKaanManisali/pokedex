@@ -15,6 +15,10 @@ body {
     height: 30px;
 }
 
+.blur {
+    filter: blur(2px);
+}
+
 .detailed-card {
     height: 100vh;
     width: 100%;
@@ -31,14 +35,19 @@ body {
     position: fixed !important;
     top: 50%;
     left: 50%;
-    transform: translate(-55%, -47.5%);
+    transform: translate(-54%, -48%);
     min-height: 450px;
     min-width: 450px;
     overflow: hidden;
     background-image: url('img/card-background.png');
     background-position: 50% 30%;
-    background-size: contain;
+    background-size: 72.5% 43%;
     background-repeat: no-repeat;
+    border: unset;
+}
+
+.general-info {
+    display: flex;
 }
 
 .card-header {
@@ -54,7 +63,7 @@ body {
 }
 
 .tab-content {
-    min-height: 200px;
+    min-height: 250px;
     background-color: white;
 }
 
@@ -70,12 +79,14 @@ body {
     box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.15), -2px -2px 5px 3px rgba(0, 0, 0, 0.15);
     background-image: url('img/card-background.png');
     background-position: 50% 30%;
-    background-size: contain;
+    background-size: 85% 60%;
     background-repeat: no-repeat;
 }
 
 .card-img-top {
     transition: transform 100ms ease-in-out;
+    width: 75% !important;
+    filter: drop-shadow(0 0 10px black);
 }
 
 .card-img-top:hover {

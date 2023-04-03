@@ -36,41 +36,53 @@
 
     <div id="pokemon-list" class="pokemon-list row row-cols-1 m-0 justify-content-center"></div>
 
-    <div id="detailed-card" class="detailed-card" onclick="hideDetails()" style="display: none;">
+    <div id="detailed-card" class="detailed-card" onclick="hideDetails(currentIndex)" style="display: none;">
 
         <div id="detailed-card-background" class="card m-3 border-3 rounded-4" style="width: 18rem;" onclick="doNotClose(event)">
 
-            <div class="card-header text-center fs-1 text-white d-flex"><div id="detailed-pokemon-id" class="flex-fill"></div><img id="close-icon" class="icon" src="img/close-icon.svg" onclick="hideDetails()"></div>
-            <img id="detailed-pokemon-image" src="" class="card-img-top">
+            <div class="card-header text-center fs-1 text-white"><div id="detailed-pokemon-id"></div><img id="close-icon" class="icon" src="img/close-icon.svg" onclick="hideDetails(currentIndex)"></div>
+            <div class="d-flex justify-content-center"><img id="detailed-pokemon-image" src="" class="card-img-top"></div>
             <div id="detailed-card-body" class="card-body text-center">
                 <h5 class="card-title text-center fs-1 text-white"></h5>
             </div>
             
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
 
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="true">About</button>
+                <li class="nav-item d-flex flex-fill" role="presentation">
+                  <button class="nav-link flex-fill text-black active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="true">About</button>
                 </li>
     
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats-tab-pane" type="button" role="tab" aria-controls="stats-tab-pane" aria-selected="false">Stats</button>
+                <li class="nav-item d-flex flex-fill" role="presentation">
+                  <button class="nav-link flex-fill text-black" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats-tab-pane" type="button" role="tab" aria-controls="stats-tab-pane" aria-selected="false">Stats</button>
                 </li>
     
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="moves-tab" data-bs-toggle="tab" data-bs-target="#moves-tab-pane" type="button" role="tab" aria-controls="moves-tab-pane" aria-selected="false">Moves</button>
+                <li class="nav-item d-flex flex-fill" role="presentation">
+                  <button class="nav-link flex-fill text-black" id="moves-tab" data-bs-toggle="tab" data-bs-target="#moves-tab-pane" type="button" role="tab" aria-controls="moves-tab-pane" aria-selected="false">Moves</button>
                 </li>
     
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="evolution-tab" data-bs-toggle="tab" data-bs-target="#evolution-tab-pane" type="button" role="tab" aria-controls="evolution-tab-pane" aria-selected="false">Evolution</button>
+                <li class="nav-item d-flex flex-fill" role="presentation">
+                  <button class="nav-link flex-fill text-black" id="evolution-tab" data-bs-toggle="tab" data-bs-target="#evolution-tab-pane" type="button" role="tab" aria-controls="evolution-tab-pane" aria-selected="false">Evolution</button>
                 </li>
     
               </ul>
     
-              <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">About</div>
-                <div class="tab-pane fade" id="stats-tab-pane" role="tabpanel" aria-labelledby="stats-tab" tabindex="0">Stats</div>
-                <div class="tab-pane fade" id="moves-tab-pane" role="tabpanel" aria-labelledby="moves-tab" tabindex="0">Moves</div>
-                <div class="tab-pane fade" id="evolution-tab-pane" role="tabpanel" aria-labelledby="evolution-tab" tabindex="0">Evolution</div>
+              <div class="tab-content d-flex flex-column pt-3" id="myTabContent">
+                <div class="tab-pane fade show active" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
+                    <span class="d-flex flex-column">
+                        <p id="name">
+
+                        </p>
+                        <p id="detailed-types" class="d-flex justify-content-evenly">
+                            
+                        </p>
+                        <p id="general-info" class="d-flex justify-content-evenly">
+                            
+                        </p>
+                    </span>
+                </div>
+                <div class="tab-pane fade ms-3 mt-3" id="stats-tab-pane" role="tabpanel" aria-labelledby="stats-tab" tabindex="0"></div>
+                <div class="tab-pane fade ms-3 mt-3" id="moves-tab-pane" role="tabpanel" aria-labelledby="moves-tab" tabindex="0"></div>
+                <div class="tab-pane fade ms-3 mt-3" id="evolution-tab-pane" role="tabpanel" aria-labelledby="evolution-tab" tabindex="0"></div>
               </div>
     
             </ul>

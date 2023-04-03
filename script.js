@@ -1,4 +1,5 @@
 let pokemons = [];
+let currentIndex = 0;
 
 
 async function getPokemons() {
@@ -33,7 +34,7 @@ function pokemonTemplate(j, formattedName, id, image) {
     return /*html*/`
         <div id="card${j}" class="card pokemon-card m-3 text-center border-3 rounded-4" style="width: 20rem;">
             <span class="fs-1 text-white">#${id}</span>
-            <img src="${image}" class="card-img-top" onclick="showDetails(${j})">
+            <div class="d-flex justify-content-center"><img src="${image}" class="card-img-top" onclick="showDetails(${j})"></div>
             <div id="card-body${j}" class="card-body">
                 <h5 class="card-title fs-1 text-white mt-5">${formattedName}</h5>
             </div>
@@ -66,15 +67,39 @@ function renderType(j, types) {
 
 function showDetails(j) {
     toggleVisibility('detailed-card', 'flex');
-    
-    let detailedCardBody = document.getElementById('detailed-card-background');
-    let type = pokemons[j]['types']['0']['type']['name'];
-    detailedCardBody.classList.add(`${type}-card`);
+    renderDetailedBackground(j);
+    renderDetailedId(j);
+    renderDetailedImage(j)
+    renderAbout(j);
+    document.getElementById('pokemon-list').classList.add('blur');
+    currentIndex = j;
+}
 
+
+function hideDetails(currentIndex) {
+    toggleVisibility('detailed-card', 'none');
+    let detailedCardBackground = document.getElementById('detailed-card-background');
+    let type = pokemons[currentIndex]['types']['0']['type']['name'];
+    detailedCardBackground.classList.remove(`${type}-card`);
+    document.getElementById('pokemon-list').classList.remove('blur');
+}
+
+
+function renderDetailedBackground(j) {
+    let detailedCardBackground = document.getElementById('detailed-card-background');
+    let type = pokemons[j]['types']['0']['type']['name'];
+    detailedCardBackground.classList.add(`${type}-card`);
+}
+
+
+function renderDetailedId(j) {
     let detailedPokemonId = document.getElementById('detailed-pokemon-id');
     let id = pokemons[j]['id'];
     detailedPokemonId.innerHTML = `#${id}`
+}
 
+
+function renderDetailedImage(j) {
     let detailedPokemonImage = document.getElementById('detailed-pokemon-image');
     let image = pokemons[j]['sprites']['other']['home']['front_default'];
     detailedPokemonImage.src = image;
@@ -82,9 +107,61 @@ function showDetails(j) {
 }
 
 
-function hideDetails() {
-    toggleVisibility('detailed-card', 'none');
-    // fix bug where background-color doesn't reset
+function renderAbout(j) {
+    renderName(j);
+    renderTypes(j);
+    renderGeneralInfo(j);
+}
+
+
+function renderTypes(j) {
+    let types = pokemons[j]['types']
+    let detailedTypes = document.getElementById('detailed-types');
+    detailedTypes.innerHTML = ''
+
+    for (let t = 0; t < types.length; t++) {
+        const type = types[t]['type']['name'];
+        let formattedType = capitalizeFirstLetter(type);
+        detailedTypes.innerHTML += /*html*/`
+            <span id="${j}detailed-type${t}" class="badge fs-6 text-black">${formattedType}</span>
+        `;
+        document.getElementById(`${j}detailed-type${t}`).classList.add(`${type}-badge`);
+    }
+}
+
+
+function renderGeneralInfo(j) {
+    let generalInfo = document.getElementById('general-info');
+    let height = pokemons[j]['height'];
+    let weight = pokemons[j]['weight'];
+    let formattedHeight = formatNumber(`${height}`);
+    let formattedWeight = formatNumber(`${weight}`);
+    
+    generalInfo.innerHTML = /*html*/`
+        <h5>height: ${formattedHeight}m</h5>
+        <h5>weight: ${formattedWeight}kg</h5>
+    `;
+}
+
+
+function renderName(j) {
+    let name = document.getElementById('name');
+    let pokemonName = pokemons[j]['name']
+    let formattedPokemonName = capitalizeFirstLetter(pokemonName);
+
+    name.innerHTML = /*html*/`
+        <h5 class="fs-1 text-center">${formattedPokemonName}</h5>
+    `;
+}
+
+
+function formatNumber(number) {
+    if (number >= 10) {
+        number = number.slice(0, -1);
+    } else {
+        number = '0,' + number;
+    }
+    return number;
 }
 
 
