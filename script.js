@@ -1,5 +1,5 @@
 let pokemons = [];
-let currentIndex = 0;
+let currentIndex;
 
 
 async function getPokemons() {
@@ -71,6 +71,7 @@ function showDetails(j) {
     renderDetailedId(j);
     renderDetailedImage(j)
     renderAbout(j);
+    renderStats(j);
     document.getElementById('pokemon-list').classList.add('blur');
     currentIndex = j;
 }
@@ -123,7 +124,7 @@ function renderTypes(j) {
         const type = types[t]['type']['name'];
         let formattedType = capitalizeFirstLetter(type);
         detailedTypes.innerHTML += /*html*/`
-            <span id="${j}detailed-type${t}" class="badge fs-6 text-black">${formattedType}</span>
+            <span id="${j}detailed-type${t}" class="badge fs-5 text-white">${formattedType}</span>
         `;
         document.getElementById(`${j}detailed-type${t}`).classList.add(`${type}-badge`);
     }
