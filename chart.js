@@ -1,12 +1,17 @@
 let labels = [];
 let baseStats = [];
+let statsChart;
 
 
-function renderStats(j) {
+function renderStats(currentIndex) {
+    let statsTabPane = document.getElementById('stats-tab-pane')
+    statsTabPane.innerHTML = /*html*/`
+        <canvas id="stats"></canvas>
+    `;
     const ctx = document.getElementById('stats');
-    new Chart(ctx, {
+    statsChart = new Chart(ctx, {
         type: 'radar',
-        data: getData(j),
+        data: getData(currentIndex),
         options: getOptions(),
     });
 }
@@ -20,6 +25,7 @@ function getData(j) {
         labels.push(label);
         const stat = stats[s]['base_stat'];
         baseStats.push(stat);
+
     }
 
     let data = {
@@ -34,7 +40,8 @@ function getData(j) {
                 pointBackgroundColor: 'rgb(255, 99, 132)',
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
+                pointHoverBorderColor: 'rgb(255, 99, 132)',
+                borderWidth: 3
             }
         ]
     }
@@ -44,7 +51,24 @@ function getData(j) {
 
 
 function getOptions() {
-    let options
-
+    let options = {
+        plugins: {
+            legend: {
+                display: false
+            },
+            responsive: true
+        }
+    }
     return options;
+}
+
+
+function resetChart() {
+    let statsTabPane = document.getElementById('stats-tab-pane')
+    if (statsChart) {
+        statsChart.destroy();
+        statsTabPane.innerHTML = '';
+        labels = [];
+        baseStats = [];
+    }
 }

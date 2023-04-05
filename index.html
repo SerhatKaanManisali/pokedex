@@ -28,7 +28,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-                <form class="d-flex" role="search">
+                <form class="d-flex my-2" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -36,7 +36,9 @@
         </div>
     </nav>
 
-    <div id="pokemon-list" class="pokemon-list row row-cols-1 m-0 justify-content-center"></div>
+    <div id="pokemon-list" class="pokemon-list row m-0 justify-content-center"></div>
+
+    <button id="previous-button" class="btn previous-image" onclick="previousImage(currentIndex)" style="display: none;"><img src="img/arrow-left.svg"></button>
 
     <div id="detailed-card" class="detailed-card" onclick="hideDetails(currentIndex)" style="display: none;">
 
@@ -44,55 +46,40 @@
 
             <div class="card-header text-center fs-1 text-white"><div id="detailed-pokemon-id"></div><img id="close-icon" class="icon" src="img/close-icon.svg" onclick="hideDetails(currentIndex)"></div>
             <div class="d-flex justify-content-center"><img id="detailed-pokemon-image" src="" class="card-img-top"></div>
-            <div id="detailed-card-body" class="card-body text-center">
-                <h5 class="card-title text-center fs-1 text-white"></h5>
-            </div>
             
             <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
 
                 <li class="nav-item d-flex flex-fill" role="presentation">
-                  <button class="nav-link flex-fill text-black active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="true">About</button>
+                  <button class="nav-link flex-fill text-black active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="true" onclick="resetChart()">About</button>
                 </li>
     
                 <li class="nav-item d-flex flex-fill" role="presentation">
-                  <button class="nav-link flex-fill text-black" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats-tab-pane" type="button" role="tab" aria-controls="stats-tab-pane" aria-selected="false">Stats</button>
+                  <button class="nav-link flex-fill text-black" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats-tab-pane" type="button" role="tab" aria-controls="stats-tab-pane" aria-selected="false" onclick="renderStats(currentIndex)">Stats</button>
                 </li>
     
                 <li class="nav-item d-flex flex-fill" role="presentation">
-                  <button class="nav-link flex-fill text-black" id="moves-tab" data-bs-toggle="tab" data-bs-target="#moves-tab-pane" type="button" role="tab" aria-controls="moves-tab-pane" aria-selected="false">Moves</button>
-                </li>
-    
-                <li class="nav-item d-flex flex-fill" role="presentation">
-                  <button class="nav-link flex-fill text-black" id="evolution-tab" data-bs-toggle="tab" data-bs-target="#evolution-tab-pane" type="button" role="tab" aria-controls="evolution-tab-pane" aria-selected="false">Evolution</button>
+                  <button class="nav-link flex-fill text-black" id="moves-tab" data-bs-toggle="tab" data-bs-target="#moves-tab-pane" type="button" role="tab" aria-controls="moves-tab-pane" aria-selected="false" onclick="resetChart()">Moves</button>
                 </li>
     
               </ul>
     
-              <div class="tab-content d-flex flex-column pt-3" id="myTabContent">
+              <div class="tab-content d-flex flex-column" id="myTabContent">
 
                 <div class="tab-pane fade show active" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
 
-                    <span class="d-flex flex-column">
-
+                    <span class="d-flex flex-column pt-3">
                         <p id="name"></p>
-
                         <p id="detailed-types" class="d-flex justify-content-evenly"></p>
-
                         <p id="general-info" class="d-flex justify-content-evenly"></p>
-
                     </span>
 
                 </div>
 
-                <div class="tab-pane fade ms-3 mt-3" id="stats-tab-pane" role="tabpanel" aria-labelledby="stats-tab" tabindex="0">
+                <div class="tab-pane fade d-flex justify-content-center" id="stats-tab-pane" role="tabpanel" aria-labelledby="stats-tab" tabindex="0"></div>
 
-                    <canvas id="stats"></canvas>
-
+                <div class="tab-pane fade ms-3 mt-3" id="moves-tab-pane" role="tabpanel" aria-labelledby="moves-tab" tabindex="0" style="overflow: scroll;">
+                    <ul id="moves" class="list-group"></ul>      
                 </div>
-
-                <div class="tab-pane fade ms-3 mt-3" id="moves-tab-pane" role="tabpanel" aria-labelledby="moves-tab" tabindex="0"></div>
-
-                <div class="tab-pane fade ms-3 mt-3" id="evolution-tab-pane" role="tabpanel" aria-labelledby="evolution-tab" tabindex="0"></div>
 
               </div>
     
@@ -101,6 +88,8 @@
         </div>
 
     </div>
+
+    <button id="next-button" class="btn next-image" onclick="nextImage(currentIndex)" style="display: none;"><img src="img/arrow-right.svg"></button>
 
 </body>
 

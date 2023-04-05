@@ -1,5 +1,5 @@
 let pokemons = [];
-let currentIndex;
+let currentIndex = 0;
 
 
 async function getPokemons() {
@@ -32,7 +32,7 @@ function renderPokemons() {
 
 function pokemonTemplate(j, formattedName, id, image) {
     return /*html*/`
-        <div id="card${j}" class="card pokemon-card m-3 text-center border-3 rounded-4" style="width: 20rem;">
+        <div id="card${j}" class="card pokemon-card m-3 text-center border-3 rounded-4" style="width: 18rem;">
             <span class="fs-1 text-white">#${id}</span>
             <div class="d-flex justify-content-center"><img src="${image}" class="card-img-top" onclick="showDetails(${j})"></div>
             <div id="card-body${j}" class="card-body">
@@ -66,23 +66,29 @@ function renderType(j, types) {
 
 
 function showDetails(j) {
+    currentIndex = j;
     toggleVisibility('detailed-card', 'flex');
+    toggleVisibility('previous-button', 'flex');
+    toggleVisibility('next-button', 'flex');
     renderDetailedBackground(j);
     renderDetailedId(j);
     renderDetailedImage(j)
     renderAbout(j);
-    renderStats(j);
+    renderMoves(j);
     document.getElementById('pokemon-list').classList.add('blur');
-    currentIndex = j;
 }
 
 
 function hideDetails(currentIndex) {
     toggleVisibility('detailed-card', 'none');
+    toggleVisibility('previous-button', 'none');
+    toggleVisibility('next-button', 'none');
     let detailedCardBackground = document.getElementById('detailed-card-background');
     let type = pokemons[currentIndex]['types']['0']['type']['name'];
     detailedCardBackground.classList.remove(`${type}-card`);
     document.getElementById('pokemon-list').classList.remove('blur');
+
+    resetChart();
 }
 
 
@@ -153,6 +159,32 @@ function renderName(j) {
     name.innerHTML = /*html*/`
         <h5 class="fs-1 text-center">${formattedPokemonName}</h5>
     `;
+}
+
+
+function renderMoves(j) {
+    let movesList = document.getElementById('moves');
+    movesList.innerHTML = '';
+    let moves = pokemons[j]['moves']
+    for (let m = 0; m < moves.length; m++) {
+        const move = moves[m]['move']['name'];
+        let formattedMove = capitalizeFirstLetter(move);
+        movesList.innerHTML += /*html*/`
+            <li class="list-group-item">${formattedMove}</li>
+        `;
+    }
+}
+
+
+function previousImage(currentIndex) {
+    currentIndex--;
+    showDetails(currentIndex);
+}
+
+
+function nextImage(currentIndex) {
+    currentIndex++;
+    showDetails(currentIndex);
 }
 
 

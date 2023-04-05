@@ -19,6 +19,20 @@ body {
     filter: blur(2px);
 }
 
+.previous-image {
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    left: 20%;
+}
+
+.next-image {
+    z-index: 2;
+    position: fixed;
+    top: 50%;
+    right: 20%;
+}
+
 .detailed-card {
     height: 100vh;
     width: 100%;
@@ -39,11 +53,17 @@ body {
     min-height: 450px;
     min-width: 450px;
     overflow: hidden;
-    background-image: url('img/card-background.png');
-    background-position: 50% 30%;
-    background-size: 72.5% 43%;
-    background-repeat: no-repeat;
     border: unset;
+}
+
+#detailed-pokemon-image {
+    background-image: url('img/card-background.png');
+    background-size: contain;
+}
+
+#stats-tab-pane {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .general-info {
@@ -63,8 +83,12 @@ body {
 }
 
 .tab-content {
-    min-height: 250px;
+    height: 300px;
     background-color: white;
+}
+
+#moves li:nth-child(even){
+    background-color: lightgray;
 }
 
 .pokemon-list {
