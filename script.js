@@ -2,6 +2,7 @@ let pokemons = [];
 let currentIndex = 0;
 
 
+
 async function getPokemons() {
     for (let i = 1; i < 21; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
@@ -15,6 +16,8 @@ async function getPokemons() {
 
 
 function renderPokemons() {
+    let pokemonList = document.getElementById('pokemon-list');
+    pokemonList.innerHTML = '';
     for (let j = 0; j < pokemons.length; j++) {
         const pokemon = pokemons[j];
         let name = pokemon['name'];
@@ -22,7 +25,6 @@ function renderPokemons() {
         let id = pokemon['id'];
         let image = pokemon['sprites']['other']['home']['front_default'];
         let types = pokemon['types'];
-        let pokemonList = document.getElementById('pokemon-list');
         pokemonList.innerHTML += pokemonTemplate(j, formattedName, id, image);
         renderBackground(j);
         renderType(j, types);
@@ -76,6 +78,7 @@ function showDetails(j) {
     renderAbout(j);
     renderMoves(j);
     checkArrow(currentIndex);
+    renderStats(currentIndex);
     document.getElementById('pokemon-list').classList.add('blur');
 }
 
@@ -180,12 +183,14 @@ function renderMoves(j) {
 
 
 function previousImage(currentIndex) {
+    resetChart();
     currentIndex--;
     showDetails(currentIndex);
 }
 
 
 function nextImage(currentIndex) {
+    resetChart();
     currentIndex++;
     showDetails(currentIndex);
 }
@@ -202,6 +207,29 @@ function checkArrow(currentIndex) {
         toggleVisibility('next-button', 'none');
     } else {
         toggleVisibility('next-button', 'flex');
+    }
+}
+
+
+function filterPokemons() {
+    let input = document.getElementById('search-bar').value;
+    input = input.toLowerCase();
+    console.log(input);
+
+    let pokemonList = document.getElementById('pokemon-list');
+    pokemonList.innerHTML = '';
+    for (let j = 0; j < pokemons.length; j++) {
+        const pokemon = pokemons[j];
+        let name = pokemon['name'];
+        let formattedName = capitalizeFirstLetter(name);
+        let id = pokemon['id'];
+        let image = pokemon['sprites']['other']['home']['front_default'];
+        let types = pokemon['types'];
+        if (name.toLowerCase().includes(input)) {
+            pokemonList.innerHTML += pokemonTemplate(j, formattedName, id, image);
+            renderBackground(j);
+            renderType(j, types);
+        }
     }
 }
 

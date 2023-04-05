@@ -35,8 +35,7 @@ function getData(j) {
                 label: '',
                 data: baseStats,
                 fill: true,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: ['blue', 'red', 'green', 'yellow', 'purple', 'orange'],
                 borderWidth: 1
             }
         ]
@@ -48,12 +47,13 @@ function getData(j) {
 
 function getOptions() {
     let options = {
+        indexAxis: 'y',
         plugins: {
             aspectRatio: 2,
+            responsive: true,
             legend: {
                 display: false
-            },
-            responsive: true
+            }
         }
     }
     return options;
