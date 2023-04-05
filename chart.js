@@ -10,7 +10,7 @@ function renderStats(currentIndex) {
     `;
     const ctx = document.getElementById('stats');
     statsChart = new Chart(ctx, {
-        type: 'radar',
+        type: 'bar',
         data: getData(currentIndex),
         options: getOptions(),
     });
@@ -37,11 +37,7 @@ function getData(j) {
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)',
-                borderWidth: 3
+                borderWidth: 1
             }
         ]
     }
@@ -53,6 +49,7 @@ function getData(j) {
 function getOptions() {
     let options = {
         plugins: {
+            aspectRatio: 2,
             legend: {
                 display: false
             },

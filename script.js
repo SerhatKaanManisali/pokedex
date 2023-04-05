@@ -75,6 +75,7 @@ function showDetails(j) {
     renderDetailedImage(j)
     renderAbout(j);
     renderMoves(j);
+    checkArrow(currentIndex);
     document.getElementById('pokemon-list').classList.add('blur');
 }
 
@@ -83,8 +84,10 @@ function hideDetails(currentIndex) {
     toggleVisibility('detailed-card', 'none');
     toggleVisibility('previous-button', 'none');
     toggleVisibility('next-button', 'none');
+
     let detailedCardBackground = document.getElementById('detailed-card-background');
     let type = pokemons[currentIndex]['types']['0']['type']['name'];
+
     detailedCardBackground.classList.remove(`${type}-card`);
     document.getElementById('pokemon-list').classList.remove('blur');
 
@@ -185,6 +188,21 @@ function previousImage(currentIndex) {
 function nextImage(currentIndex) {
     currentIndex++;
     showDetails(currentIndex);
+}
+
+
+function checkArrow(currentIndex) {
+    if (currentIndex == 0) {
+        toggleVisibility('previous-button', 'none');
+    } else {
+        toggleVisibility('previous-button', 'flex');
+    }
+
+    if (currentIndex == pokemons.length - 1) {
+        toggleVisibility('next-button', 'none');
+    } else {
+        toggleVisibility('next-button', 'flex');
+    }
 }
 
 
