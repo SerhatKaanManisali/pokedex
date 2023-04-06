@@ -18,8 +18,6 @@ async function getPokemons() {
 
 
 function renderPokemons() {
-    let pokemonList = document.getElementById('pokemon-list');
-
     for (let j = startIndex - 1; j < endIndex - 1; j++) {
         const pokemon = pokemons[j];
         let name = pokemon['name'];
@@ -27,13 +25,18 @@ function renderPokemons() {
         let id = pokemon['id'];
         let image = pokemon['sprites']['other']['home']['front_default'];
         let types = pokemon['types'];
-
-        pokemonList.innerHTML += pokemonTemplate(j, formattedName, id, image);
-        renderBackground(j);
-        renderType(j, types);
-        checkSpinner();
+        generateCards(j, formattedName, id, image, types);
     }
     loading = false;
+    checkSpinner();
+}
+
+
+function generateCards(j, formattedName, id, image, types) {
+    let pokemonList = document.getElementById('pokemon-list');
+    pokemonList.innerHTML += pokemonTemplate(j, formattedName, id, image);
+    renderBackground(j);
+    renderType(j, types);
     checkSpinner();
 }
 
@@ -261,7 +264,6 @@ function checkArrow(currentIndex) {
 function filterPokemons() {
     let input = document.getElementById('search-bar').value;
     input = input.toLowerCase();
-    console.log(input);
 
     let pokemonList = document.getElementById('pokemon-list');
     pokemonList.innerHTML = '';
@@ -298,6 +300,7 @@ function checkSpinner() {
         toggleVisibility('more-content', 'block');
     } else {
         toggleVisibility('loader-container', 'flex');
+        document.getElementById('loader-container').style.height = '10vh'
     }
 }
 
