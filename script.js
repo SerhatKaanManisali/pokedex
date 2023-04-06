@@ -85,6 +85,7 @@ function showDetails(j) {
     renderMoves(j);
     checkArrow(currentIndex);
     renderStats(currentIndex);
+    showAbout();
     document.getElementById('pokemon-list').classList.add('blur');
 }
 
@@ -184,6 +185,44 @@ function renderMoves(j) {
         movesList.innerHTML += /*html*/`
             <li class="list-group-item">${formattedMove}</li>
         `;
+    }
+}
+
+
+function showAbout() {
+    let aboutTabPane = document.getElementById('about-tab-pane');
+    let aboutTab = document.getElementById('about-tab');
+    aboutTabPane.classList.add('show');
+    aboutTabPane.classList.add('active');
+    aboutTab.classList.add('active');
+    aboutTab.setAttribute('aria-selected', 'true');
+    disableStatsTabPane();
+    disableMovesTabPane();
+}
+
+
+function disableStatsTabPane() {
+    let statsTabPane = document.getElementById('stats-tab-pane');
+    let statsTab = document.getElementById('stats-tab');
+
+    if (statsTabPane.classList.contains('show') && statsTabPane.classList.contains('active')) {
+        statsTabPane.classList.remove('show');
+        statsTabPane.classList.remove('active');
+        statsTab.classList.remove('active');
+        statsTab.setAttribute('aria-selected', 'false');
+    }
+}
+
+
+function disableMovesTabPane() {
+    let movesTabPane = document.getElementById('moves-tab-pane');
+    let movesTab = document.getElementById('moves-tab');
+
+    if (movesTabPane.classList.contains('show') && movesTabPane.classList.contains('active')) {
+        movesTabPane.classList.remove('show');
+        movesTabPane.classList.remove('active');
+        movesTab.classList.remove('active');
+        movesTab.setAttribute('aria-selected', 'false');
     }
 }
 
