@@ -1,34 +1,40 @@
 let pokemons = [];
 let currentIndex = 0;
+let startIndex = 1
+let endIndex = 51
+let loading = true;
 
 
 
 async function getPokemons() {
-    for (let i = 1; i < 21; i++) {
+    for (let i = startIndex; i < endIndex; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         let rawData = await fetch(url);
         let sortedData = await rawData.json();
         pokemons.push(sortedData);
     }
-    console.log(pokemons);
     renderPokemons();
 }
 
 
 function renderPokemons() {
     let pokemonList = document.getElementById('pokemon-list');
-    pokemonList.innerHTML = '';
-    for (let j = 0; j < pokemons.length; j++) {
+
+    for (let j = startIndex - 1; j < endIndex - 1; j++) {
         const pokemon = pokemons[j];
         let name = pokemon['name'];
         let formattedName = capitalizeFirstLetter(name);
         let id = pokemon['id'];
         let image = pokemon['sprites']['other']['home']['front_default'];
         let types = pokemon['types'];
+
         pokemonList.innerHTML += pokemonTemplate(j, formattedName, id, image);
         renderBackground(j);
         renderType(j, types);
+        checkSpinner();
     }
+    loading = false;
+    checkSpinner();
 }
 
 
@@ -149,7 +155,7 @@ function renderGeneralInfo(j) {
     let weight = pokemons[j]['weight'];
     let formattedHeight = formatNumber(`${height}`);
     let formattedWeight = formatNumber(`${weight}`);
-    
+
     generalInfo.innerHTML = /*html*/`
         <h5>height: ${formattedHeight}m</h5>
         <h5>weight: ${formattedWeight}kg</h5>
@@ -218,6 +224,7 @@ function filterPokemons() {
 
     let pokemonList = document.getElementById('pokemon-list');
     pokemonList.innerHTML = '';
+
     for (let j = 0; j < pokemons.length; j++) {
         const pokemon = pokemons[j];
         let name = pokemon['name'];
@@ -230,6 +237,26 @@ function filterPokemons() {
             renderBackground(j);
             renderType(j, types);
         }
+    }
+}
+
+
+function showMorePokemons() {
+    startIndex = startIndex + 50
+    endIndex = endIndex + 50
+    loading = true;
+    toggleVisibility('more-content', 'none');
+    checkSpinner();
+    getPokemons();
+}
+
+
+function checkSpinner() {
+    if (loading == false) {
+        toggleVisibility('loader-container', 'none');
+        toggleVisibility('more-content', 'block');
+    } else {
+        toggleVisibility('loader-container', 'flex');
     }
 }
 
