@@ -43,9 +43,9 @@ function generateCards(j, formattedName, id, image, types) {
 
 function pokemonTemplate(j, formattedName, id, image) {
     return /*html*/`
-        <div id="card${j}" class="card pokemon-card m-3 text-center border-3 rounded-4" style="width: 18rem;">
+        <div id="card${j}" class="card pokemon-card m-3 text-center border-3 rounded-4" style="width: 18rem;" onclick="showDetails(${j})">
             <span class="fs-1 text-white">#${id}</span>
-            <div class="d-flex justify-content-center"><img src="${image}" class="card-img-top" onclick="showDetails(${j})"></div>
+            <div class="d-flex justify-content-center"><img src="${image}" class="card-img-top"></div>
             <div id="card-body${j}" class="card-body">
                 <h5 class="card-title fs-1 text-white mt-5">${formattedName}</h5>
             </div>
