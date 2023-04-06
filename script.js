@@ -192,6 +192,7 @@ function previousImage(currentIndex) {
     resetChart();
     currentIndex--;
     showDetails(currentIndex);
+    toggleVisibility('stats', 'none');
 }
 
 
@@ -199,6 +200,7 @@ function nextImage(currentIndex) {
     resetChart();
     currentIndex++;
     showDetails(currentIndex);
+    toggleVisibility('stats', 'none');
 }
 
 
